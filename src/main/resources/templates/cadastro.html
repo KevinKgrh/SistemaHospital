@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i0.wp.com/mrwebnet.com.br/wp-content/uploads/2021/08/1948406-tampo-da-mesa-de-madeira-para-exibicao-com-fundo-desfocado-do-restaurante-gr%C3%A1tis-foto.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .title-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent; 
+            padding: 15px;
+            box-shadow: none; 
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #000; 
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    
+      <div class="title-bar">
+        <h1>Cadastro</h1>
+    </div>
+    
+    <form action="/salvar" method="post" th:object="${paciente}">
+    <input type="hidden" th:field="*{id}" /> 
+
+    <label for="nome">Nome:</label>
+    <input type="text" th:field="*{nome}" required>
+
+    <label for="idade">Idade:</label>
+    <input type="number" th:field="*{idade}" required>
+
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input type="date" th:field="*{dataNascimento}" required>
+
+    <label for="telefone">Telefone:</label>
+    <input type="tel" th:field="*{telefone}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" th:field="*{email}" required>
+
+    <label for="cpf">CPF:</label>
+    <input type="text" th:field="*{cpf}" required>
+
+    <button type="submit">Salvar</button>
+    <a href="/" class="back-button">Voltar para a Página Inicial</a>
+    <p th:if="${mensagem}" th:text="${mensagem}" style="color: #ff0000;"></p>
+</form>
+
+        
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta e estilos aqui... -->
+</head>
+<body>
+    
+        <style>
+
+    body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://static.vecteezy.com/ti/fotos-gratis/p2/2167959-abstrato-desfocado-hospital-interior-para-fundo-gratis-foto.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            text-align: center;
+        }
+    
+        </style>
+
+
+    <div class="title-bar">
+        <h1>Listagem de Pacientes</h1>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <!-- Adicione mais colunas conforme necessário -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iteração sobre a lista de pacientes -->
+            <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.id}"></td>
+                <td th:text="${paciente.nome}"></td>
+                <td th:text="${paciente.idade}"></td>
+                <td th:text="${#dates.format(paciente.dataNascimento, 'dd/MM/yyyy')}"></td>
+                <td th:text="${paciente.telefone}"></td>
+                <td th:text="${paciente.email}"></td>
+                <td th:text="${paciente.cpf}"></td>
+        <td>
+        <a th:href="@{'/atualizar/' + ${paciente.id}}" class="option-button">Atualizar</a>
+        <a th:href="@{'/excluir/' + ${paciente.id}}" class="option-button" style="color: red;">Excluir</a>
+        </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/" class="back-button">Voltar para a Página Inicial</a>
+
+</body>
+</html>
